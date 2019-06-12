@@ -1,0 +1,11 @@
+Started by user [8mha:////4DLsoJ9Tjf8MQf+ue1wLIhBO28tLcS7Hd9VdiW0fEC5oAAAAnR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyBEgZB/dLi1CL94ozEosS8pMSUvEwANSPSIcYAAAA=[0mSharanappa Badni
+Building in workspace /Users/sharanbadni/.jenkins/workspace/ssh_task_list
+[ssh_task_list] $ /bin/sh -xe /var/folders/7q/lthw_sqj6xg5n_99vz3z506r0000gn/T/jenkins7034932068537117969.sh
++ ssh -tt sharan@10.111.111.24 '
+ ls -al
+'
+Permission denied, please try again.
+Permission denied, please try again.
+sharan@10.111.111.24: Permission denied (publickey,password).
+Build step 'Execute shell' marked build as failure
+Finished: FAILURE

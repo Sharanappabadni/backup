@@ -1,0 +1,65 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<flow-definition plugin="workflow-job@2.32">
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@2.65">
+    <script>node {
+    stage(&quot;Create Build&quot;){
+        parallel(
+            customer:{ node {
+                echo &quot;hey customer&quot;
+            }},
+            users:{ node {
+                echo &quot;hey users&quot;
+            }},
+            cards:{ node {
+                echo &quot;hey cards&quot;
+            }}
+            customer:{ node {
+                echo &quot;hey customer&quot;
+            }},
+            users:{ node {
+                echo &quot;hey users&quot;
+            }},
+            cards:{ node {
+                echo &quot;hey cards&quot;
+            }}
+        )
+    }
+    stage(&quot;Create Image&quot;){
+    parallel(
+            customer:{ node {
+                echo &quot;hey customer&quot;
+            }},
+            users:{ node {
+                echo &quot;hey users&quot;
+            }},
+            cards:{ node {
+                echo &quot;hey cards&quot;
+            }}
+        )
+    }
+    stage(&quot;Push Image&quot;){
+        parallel(
+            customer:{ node {
+                echo &quot;hey customer&quot;
+            }},
+            users:{ node {
+                echo &quot;hey users&quot;
+            }},
+            cards:{ node {
+                echo &quot;hey cards&quot;
+            }}
+        )
+    }
+    stage(&quot;QA VM&quot;){
+    echo &quot;QA with load testing, regression etc&quot;
+    }
+}</script>
+    <sandbox>true</sandbox>
+  </definition>
+  <triggers/>
+  <disabled>false</disabled>
+</flow-definition>

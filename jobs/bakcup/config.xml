@@ -1,0 +1,65 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<project>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers>
+    <hudson.triggers.TimerTrigger>
+      <spec>H 23 * * *</spec>
+    </hudson.triggers.TimerTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>#!/bin/bash
+
+# Setup
+#
+# - Create a new Jenkins Job
+# - Mark &quot;None&quot; for Source Control Management
+# - Select the &quot;Build Periodically&quot; build trigger
+#   - configure to run as frequently as you like
+# - Add a new &quot;Execute Shell&quot; build step
+#   - Paste the contents of this file as the command
+# - Save
+#  
+# NOTE: before this job will work, you&apos;ll need to manually navigate to the $JENKINS_HOME directory 
+# and do the initial set up of the git repository.  
+# Make sure the appropriate remote is added and the default remote/branch set up.
+#  
+
+# Jenkins Configuraitons Directory
+cd $JENKINS_HOME
+
+# Add general configurations, job configurations, and user content
+git add -- *.xml jobs/*/*.xml userContent/*
+
+# only add user configurations if they exist
+if [ -d users ]; then
+    user_configs=`ls users/*/config.xml`
+
+    if [ -n &quot;$user_configs&quot; ]; then
+        git add $user_configs
+    fi
+fi
+
+# mark as deleted anything that&apos;s been, well, deleted
+to_remove=`git status | grep &quot;deleted&quot; | awk &apos;{print $3}&apos;`
+
+if [ -n &quot;$to_remove&quot; ]; then
+    git rm --ignore-unmatch $to_remove
+fi
+
+git commit -m &quot;Automated Jenkins commit&quot;
+
+git push -q -u origin master</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers/>
+  <buildWrappers/>
+</project>

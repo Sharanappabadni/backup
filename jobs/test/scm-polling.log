@@ -1,0 +1,11 @@
+Started on 12 Jun, 2019 4:08:00 PM
+Using strategy: Default
+[poll] Last Built Revision: Revision f6c1a050996036380b665712929cfd862a26442e (refs/remotes/origin/master)
+using credential 6ac29e0f-bb76-4ed9-a038-c4700ca3c432
+ > git --version # timeout=10
+using GIT_ASKPASS to set credentials 
+ > git ls-remote -h https://sharanbadni@bitbucket.org/hellogroup/automation-agentappapi.git # timeout=10
+Found 20 remote heads on https://sharanbadni@bitbucket.org/hellogroup/automation-agentappapi.git
+[poll] Latest remote head revision on refs/heads/master is: f6c1a050996036380b665712929cfd862a26442e - already built by 20
+Done. Took 3.7 sec
+No changes

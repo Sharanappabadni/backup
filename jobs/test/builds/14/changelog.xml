@@ -1,0 +1,19 @@
+commit c1cf0d04f1ea3cf95359e0c412baee56546fbf96
+tree 9b3fbaa699269eeb99ea09eb9b5d0447f60f5eb6
+parent 1b4c3f9e95683bb0d32b5750aabf3672cac60450
+author Megha Rastogi <megha.rastogi@daytonatec.com> 2019-06-03 11:36:44 +0530
+committer Megha Rastogi <megha.rastogi@daytonatec.com> 2019-06-03 11:36:44 +0530
+
+    Navigate back test cases
+
+
+
+:100644 100644 c05c265fa382d20cd90cdf1944d468e9f7aa2562 28ea0f57d68dd9177a755aceee2e8397134eedce M	.gitignore
+:100644 100644 162702d665c6f0fe928ab4954bba40a2daaaabb3 e7fe358427b52e52b978aaf6b97c9232f2a7533d M	.idea/workspace.xml
+:100644 100644 9f5bb05366f1d9949a780b45ed7ba65ab8d96b5f 30908ce577def6255092b9bc2649c5e2c9776235 M	data/ExistingUser1.xls
+:100644 100644 f40c8581adf1ccf0c3a05fe7ba65113cc2bfd4a5 295cccb45e50147a68ef34e16c7219a280279361 M	data/NewUser.xls
+:100644 100644 cad1c896b42765001ecc27f3769c9c3a04481bc8 d4b9f878fb3dabad2817efcf08d9f758a0c2d8f1 M	src/test/java/testscripts/ExistingUser_NavigateBack_ProofOfAddress.java
+:100644 100644 ee08004b324436f02e1f201d2d4a1d257f022a92 877206f2e7f4b13e7f6e855a5cfd25eca3c183c7 M	src/test/java/testscripts/NewUser_NavigateBackFromProofOfAdressDocFromtoselectPOAtoSVtoPOAtoCaputureAddress.java
+:100644 100644 5f8e3f8ce6e738d56b6b1adb97e39ed0aadc2500 6650e4b31ae05250f2cc73ad425a7407d89fd255 M	src/test/java/testscripts/NewUser_NavigateBackFromProofOfAdressFormtoCaptureAddressInfor.java
+:100644 100644 5e9112ac9838c9a16693fae1e7a2a7c28d2ace99 41736db01736886549260f5ae1d2f3a1aedb67f4 M	src/test/java/testscripts/NewUser_NavigateBackFromSiteVerificationForm.java
+:100644 100644 299557639e03c9e8b09e6ef8a1d98715bf0175bf 06bb4c82fe0d254e39be53c65f69aab237c328a5 M	src/test/java/testscripts/NewUser_NavigateBackOnIncorrectForm.java

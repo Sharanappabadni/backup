@@ -1,0 +1,10 @@
+Started by user [8mha:////4DLsoJ9Tjf8MQf+ue1wLIhBO28tLcS7Hd9VdiW0fEC5oAAAAnR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyBEgZB/dLi1CL94ozEosS8pMSUvEwANSPSIcYAAAA=[0mSharanappa Badni
+Building in workspace /Users/sharanbadni/.jenkins/workspace/bakcup
+[bakcup] $ /bin/bash /var/folders/7q/lthw_sqj6xg5n_99vz3z506r0000gn/T/jenkins2125569684814351248.sh
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+Build step 'Execute shell' marked build as failure
+Finished: FAILURE

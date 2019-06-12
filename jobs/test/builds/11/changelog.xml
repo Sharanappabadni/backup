@@ -1,0 +1,16 @@
+commit eeaff6b8992b9d3e04198e5b0ddeb6a3f361c3b2
+tree cc83272b4e56594e7cf648bd2ad395990dd0797b
+parent 4110ea324d1976c678cc05bd29d23e456f23d17d
+author Sharan Badni <sharanbadni@Sharans-MacBook-Pro-3.local> 2019-05-17 17:46:21 +0530
+committer Sharan Badni <sharanbadni@Sharans-MacBook-Pro-3.local> 2019-05-17 17:46:21 +0530
+
+    added yes condition for other id type
+
+
+
+:100644 000000 4bca0a68d7ae141396e671612970808c76bae38f 0000000000000000000000000000000000000000 D	data/.~lock.NewUser.xls#
+:100755 100755 4dcd3f352b3b49bac61ba5f5153ef042ea131583 87b143d0510f6df02b710176764d73f8fa095ffb M	data/NewUser.xls
+:100644 100644 0ad5b58413bc282c0d1e778cf1cc859d6ae39fb9 ec582ce9b699e58e35b9309646d11424faf50277 M	src/test/java/config/ConfigPostDetails.java
+:100644 100644 cf0f9d5c40f3e344f400d500051e1753e6a8df89 d8b22e08b9290e3a14592d176fd4091d92436f6a M	src/test/java/testscripts/BasicConfig.java
+:100644 100644 e6bfe02c499c615c6c42f76e80ca23e8c76675f1 aa806d85e1b5290462f5eca04d254e857edc1a88 M	src/test/java/testscripts/CreateCard.java
+:100644 100644 0357c6f310ea5f964743fff048c878beb66b60d8 35539aabf21c79020e157810b408168b8b3b75da M	src/test/java/testscripts/NewUserEnd2EndRemitBank_Passport_ID.java

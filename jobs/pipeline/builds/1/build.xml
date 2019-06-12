@@ -1,0 +1,207 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<flow-build plugin="workflow-job@2.32">
+  <actions>
+    <hudson.model.CauseAction>
+      <causeBag class="linked-hash-map">
+        <entry>
+          <hudson.model.Cause_-UserIdCause>
+            <userId>sharanbadni</userId>
+          </hudson.model.Cause_-UserIdCause>
+          <int>1</int>
+        </entry>
+      </causeBag>
+    </hudson.model.CauseAction>
+    <org.jenkinsci.plugins.workflow.libs.LibrariesAction plugin="workflow-cps-global-lib@2.13">
+      <libraries/>
+    </org.jenkinsci.plugins.workflow.libs.LibrariesAction>
+    <org.jenkinsci.plugins.workflow.support.steps.input.InputAction plugin="pipeline-input-step@2.10">
+      <ids class="java.util.concurrent.CopyOnWriteArrayList"/>
+    </org.jenkinsci.plugins.workflow.support.steps.input.InputAction>
+    <jenkins.model.InterruptedBuildAction>
+      <causes class="com.google.common.collect.ImmutableList">
+        <org.jenkinsci.plugins.workflow.support.steps.input.Rejection plugin="pipeline-input-step@2.10">
+          <userName>sharanbadni</userName>
+          <timestamp>1554562937550</timestamp>
+        </org.jenkinsci.plugins.workflow.support.steps.input.Rejection>
+      </causes>
+    </jenkins.model.InterruptedBuildAction>
+  </actions>
+  <queueId>3</queueId>
+  <timestamp>1554562881982</timestamp>
+  <startTime>1554562881983</startTime>
+  <result>ABORTED</result>
+  <duration>55624</duration>
+  <charset>UTF-8</charset>
+  <keepLog>false</keepLog>
+  <execution class="org.jenkinsci.plugins.workflow.cps.CpsFlowExecution">
+    <result>ABORTED</result>
+    <script>#!/usr/bin/env groovy
+
+def sendEmail(status) {
+mail (
+subject : &quot;${status}: Job &apos;${env.JOB_NAME} [${env.BUILD_NUMBER}]&apos;&quot;,
+body: &quot;&quot;&quot;
+${status}: Job &apos;${env.JOB_NAME} [${env.BUILD_NUMBER}]&apos;:
+
+Check console output at &quot;${env.JOB_NAME} [${env.BUILD_NUMBER}]&quot;
+
+&quot;&quot;&quot;,
+from: env.DEFAULT_REPLYTO,
+replyTo: env.DEFAULT_REPLYTO,
+to: &apos;tech@cuemath.com&apos;
+)
+}
+
+stage &apos;Input&apos;
+def userInput = input(
+id: &apos;userInput&apos;, message: &apos;Provide input parameters&apos;, parameters: [
+[$class: &apos;TextParameterDefinition&apos;, defaultValue: &apos;exam&apos;, description: &apos;Name of Service&apos;, name: &apos;service&apos;],
+[$class: &apos;TextParameterDefinition&apos;, defaultValue: &apos;5001&apos;, description: &apos;Port of Service&apos;, name: &apos;port&apos;],
+[$class: &apos;TextParameterDefinition&apos;, defaultValue: &apos;n&apos;, description: &apos;Migrations&apos;, name: &apos;migrate&apos;],
+[$class: &apos;TextParameterDefinition&apos;, defaultValue: &apos;n&apos;, description: &apos;Install Requirements&apos;, name: &apos;requirement&apos;],
+[$class: &apos;TextParameterDefinition&apos;, defaultValue: &apos;y&apos;, description: &apos;testing_enabled&apos;, name: &apos;testing_enabled&apos;]
+])
+
+echo (&quot;Name of Service: &quot;+userInput[&apos;service&apos;])
+echo (&quot;Port of Service: &quot;+userInput[&apos;port&apos;])
+echo (&quot;Migrations: &quot;+userInput[&apos;migrate&apos;])
+echo (&quot;Install Requirements: &quot;+userInput[&apos;requirement&apos;])
+echo (&quot;testing_enabled: &quot;+userInput[&apos;testing_enabled&apos;])
+
+node {
+try {
+stage &apos;Checkout&apos;
+
+build job: &apos;swarm_staging_checkout_2&apos;, parameters: [
+[$class: &apos;StringParameterValue&apos;, name: &apos;service&apos;, value: userInput[&apos;service&apos;]]
+]
+
+} catch (e) {
+sendEmail(&quot;SERVICES - &quot; + userInput[&apos;service&apos;] + &quot; - CHECKOUT FAILED&quot;)
+throw e
+}
+try {
+stage &apos;Create Image&apos;
+
+build job: &apos;swarm_staging_create_image_2&apos;, parameters: [
+[$class: &apos;StringParameterValue&apos;, name: &apos;service&apos;, value: userInput[&apos;service&apos;]],
+[$class: &apos;StringParameterValue&apos;, name: &apos;port&apos;, value: userInput[&apos;port&apos;]],
+[$class: &apos;StringParameterValue&apos;, name: &apos;requirement&apos;, value: userInput[&apos;requirement&apos;]]
+]
+
+} catch (e) {
+sendEmail(&quot;SERVICES - &quot; + userInput[&apos;service&apos;] + &quot; - Creating Image failed&quot;)
+throw e
+}
+try {
+stage &apos;Run Image&apos;
+
+build job: &apos;swarm_staging_run_image_2&apos;, parameters: [
+[$class: &apos;StringParameterValue&apos;, name: &apos;service&apos;, value: userInput[&apos;service&apos;]],
+[$class: &apos;StringParameterValue&apos;, name: &apos;migrate&apos;, value: userInput[&apos;migrate&apos;]]
+]
+
+} catch (e) {
+sendEmail(&quot;SERVICES - &quot; + userInput[&apos;service&apos;] + &quot; - Running Image failed&quot;)
+throw e
+}
+
+try {
+stage &apos;Push Image&apos;
+
+build job: &apos;swarm_staging_push_image_2&apos;, parameters: [
+[$class: &apos;StringParameterValue&apos;, name: &apos;service&apos;, value: userInput[&apos;service&apos;]]
+]
+
+} catch (e) {
+sendEmail(&quot;SERVICES - &quot; + userInput[&apos;service&apos;] + &quot; - PUSHING IMAGE FAILED&quot;)
+throw e
+}
+try {
+stage &apos;Production Deployment&apos;
+
+build job: &apos;swarm_prod_createorupdate_service&apos;, parameters: [
+[$class: &apos;StringParameterValue&apos;, name: &apos;service&apos;, value: userInput[&apos;service&apos;]]
+]
+
+} catch (e) {
+sendEmail(&quot;SERVICES - &quot; + userInput[&apos;service&apos;] + &quot; - Production deployment FAILED&quot;)
+throw e
+}
+try {
+stage &apos;Production Migrations&apos;
+
+
+build job: &apos;swarm_prod_run_migrations&apos;, parameters: [
+[$class: &apos;StringParameterValue&apos;, name: &apos;service&apos;, value: userInput[&apos;service&apos;]],
+[$class: &apos;StringParameterValue&apos;, name: &apos;migrate&apos;, value: userInput[&apos;migrate&apos;]]
+]
+
+} catch (e) {
+sendEmail(&quot;SERVICES - &quot; + userInput[&apos;service&apos;] + &quot; - Production Migrations FAILED&quot;)
+throw e
+}
+
+sendEmail(&quot;SERVICES - &quot; + userInput[&apos;service&apos;] + &quot; - DEPLOYMENT SUCCESSFUL!&quot;)
+try {
+stage &apos;QA_prod&apos;
+if (userInput[&apos;service&apos;] in [&quot;apigateway&quot;, &quot;attendance&quot;, &quot;auth&quot;, &quot;enquiry&quot;, &quot;enrollment&quot;, &quot;exam&quot;, &quot;gameunit&quot;, &quot;parent_student&quot;, &quot;pause&quot;, &quot;payment&quot;, &quot;pricing&quot;, &quot;segment&quot;]) {
+build job: &apos;qa_service&apos;, parameters: [
+[$class: &apos;StringParameterValue&apos;, name: &apos;service_nameXML&apos;, value: userInput[&apos;service&apos;] +&quot;.xml&quot;],
+[$class: &apos;StringParameterValue&apos;, name: &apos;end_point_url&apos;, value: &quot;http://docker.cuemath.com:&quot;+ userInput[&apos;port&apos;] + &quot;/&quot;],
+[$class: &apos;StringParameterValue&apos;, name: &apos;groupname&apos;, value: &quot;get&quot;]
+]
+} else {
+prod_prefix = userInput[&apos;service&apos;];
+if(userInput[&apos;service&apos;] == &apos;parent_student&apos;) {
+prod_prefix = &apos;parent&apos;
+}
+if(userInput[&apos;service&apos;] == &apos;order_service&apos;) {
+prod_prefix = &apos;order&apos;
+}
+if(userInput[&apos;service&apos;] == &apos;inapp_notification&apos;) {
+prod_prefix = &apos;notification&apos;
+}
+build job: &apos;qa_service&apos;, parameters: [
+[$class: &apos;StringParameterValue&apos;, name: &apos;service_nameXML&apos;, value: &quot;commonhealthcheck.xml&quot;],
+[$class: &apos;StringParameterValue&apos;, name: &apos;end_point_url&apos;, value: &quot;http://docker.cuemath.com:&quot;+ userInput[&apos;port&apos;] + &quot;/&quot; + prod_prefix + &quot;/&quot;],
+[$class: &apos;StringParameterValue&apos;, name: &apos;groupname&apos;, value: &quot;get&quot;]
+]
+}
+} catch (e) {
+throw e
+}
+}</script>
+    <loadedScripts class="map"/>
+    <durabilityHint>MAX_SURVIVABILITY</durabilityHint>
+    <timings class="map">
+      <entry>
+        <string>flowNode</string>
+        <long>45487860</long>
+      </entry>
+      <entry>
+        <string>classLoad</string>
+        <long>113501240</long>
+      </entry>
+      <entry>
+        <string>run</string>
+        <long>420855866</long>
+      </entry>
+      <entry>
+        <string>parse</string>
+        <long>341356600</long>
+      </entry>
+      <entry>
+        <string>saveProgram</string>
+        <long>139296309</long>
+      </entry>
+    </timings>
+    <sandbox>true</sandbox>
+    <iota>5</iota>
+    <head>1:5</head>
+    <done>true</done>
+    <resumeBlocked>false</resumeBlocked>
+  </execution>
+  <completed>true</completed>
+  <checkouts class="hudson.util.PersistedList"/>
+</flow-build>

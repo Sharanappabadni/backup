@@ -1,0 +1,18 @@
+Started by an SCM change
+Building in workspace /Users/sharanbadni/.jenkins/workspace/test
+using credential 6ac29e0f-bb76-4ed9-a038-c4700ca3c432
+ > git rev-parse --is-inside-work-tree # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://sharanbadni@bitbucket.org/hellogroup/automation-agentappapi.git # timeout=10
+Fetching upstream changes from https://sharanbadni@bitbucket.org/hellogroup/automation-agentappapi.git
+ > git --version # timeout=10
+using GIT_ASKPASS to set credentials 
+ > git fetch --tags --force --progress https://sharanbadni@bitbucket.org/hellogroup/automation-agentappapi.git +refs/heads/*:refs/remotes/origin/*
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/master^{commit} # timeout=10
+Checking out Revision b8ac4ea65d4ba6a52f9a98f033cf6502d21e272d (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f b8ac4ea65d4ba6a52f9a98f033cf6502d21e272d
+Commit message: "modified in testng file"
+ > git rev-list --no-walk 0c2e8161b4442ff80e0a8e0d44ebaf71226389e6 # timeout=10
+Finished: SUCCESS

@@ -1,0 +1,22 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<hudson.model.UserIdMapper>
+  <version>1</version>
+  <idToDirectoryNameMap class="concurrent-hash-map">
+    <entry>
+      <string>sharanappa.badni</string>
+      <string>sharanappabadn_6463887476399318354</string>
+    </entry>
+    <entry>
+      <string>sharanbadni</string>
+      <string>sharanbadni_4342620666463204574</string>
+    </entry>
+    <entry>
+      <string>chinnamma.rugimath</string>
+      <string>chinnammarugim_5116509307607187873</string>
+    </entry>
+    <entry>
+      <string>megha.rastogi</string>
+      <string>megharastogi_2422314852254497402</string>
+    </entry>
+  </idToDirectoryNameMap>
+</hudson.model.UserIdMapper>

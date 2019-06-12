@@ -1,0 +1,18 @@
+Started by an SCM change
+Building in workspace /Users/sharanbadni/.jenkins/workspace/test
+using credential 6ac29e0f-bb76-4ed9-a038-c4700ca3c432
+ > git rev-parse --is-inside-work-tree # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://sharanbadni@bitbucket.org/hellogroup/automation-agentappapi.git # timeout=10
+Fetching upstream changes from https://sharanbadni@bitbucket.org/hellogroup/automation-agentappapi.git
+ > git --version # timeout=10
+using GIT_ASKPASS to set credentials 
+ > git fetch --tags --force --progress https://sharanbadni@bitbucket.org/hellogroup/automation-agentappapi.git +refs/heads/*:refs/remotes/origin/*
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+ > git rev-parse refs/remotes/origin/origin/master^{commit} # timeout=10
+Checking out Revision 163473be7b4bd6186c34d70583b36563e51613de (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 163473be7b4bd6186c34d70583b36563e51613de
+Commit message: "Merge branch 'master' of https://bitbucket.org/hellogroup/automation-agentappapi"
+ > git rev-list --no-walk 222fd8a0b0909a8a97e4cceb5f7e64ed592d834e # timeout=10
+Finished: SUCCESS

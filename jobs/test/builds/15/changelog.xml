@@ -1,0 +1,17 @@
+commit 36ace01427eb6b1d6bc3f32556dea14d9073c463
+tree 33e53d6663c2d9f2b1a7ff572b510e45fd9c95c5
+parent c1cf0d04f1ea3cf95359e0c412baee56546fbf96
+author Megha Rastogi <megha.rastogi@daytonatec.com> 2019-06-04 12:45:26 +0530
+committer Megha Rastogi <megha.rastogi@daytonatec.com> 2019-06-04 12:45:26 +0530
+
+    Changes done in some scripts
+
+
+
+:100644 100644 e7fe358427b52e52b978aaf6b97c9232f2a7533d dc2935f9e9f8c02d0b8dd15fd55a735375f6ad30 M	.idea/workspace.xml
+:100644 100644 295cccb45e50147a68ef34e16c7219a280279361 fcc470f3f7703a0549ec07678489814f05fd8e2c M	data/NewUser.xls
+:100644 100644 aec2f6fe6e33fc80c49ab0c650e7596ddd17e150 b2388611d28b35a40da61515796ad833ad81193b M	src/test/java/testscripts/ExistingUser_OtherId_To_Asylum.java
+:100644 100644 d27c9a88a0f0e3cc0ef68c1265c249b17f451a75 4f87a3acc8b96135044ce0076decea82e2cfaca0 M	src/test/java/testscripts/ExistingUser_Passport_To_Asylum.java
+:100644 100644 6b4e3830d82261d252c4985770206c044393bf90 98f2d643079b428126d739df7db172736c9b5df5 M	src/test/java/testscripts/NewUserEnd2End.java
+:100644 100644 8f438bd4b9172445d7756e8c2b7831717a5043b0 c9723698fddb545b764ebf7f9fbdf80f61d243b6 M	src/test/java/testscripts/NewUserEnd2EndRemitBank_Passport_Permit_ID.java
+:100644 100644 cfa0ce8fba31e496c824c83837a776e4f2f76235 02f286ada03fddfd74273814fa62c99c8ac3e6fb M	src/test/java/testscripts/NewUserEnd2EndRemitBank_RSA_ID.java
