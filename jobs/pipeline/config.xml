@@ -6,56 +6,15 @@
   <properties/>
   <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@2.65">
     <script>node {
+    environment {
+        DISABLE_AUTH = &apos;true&apos;
+        DB_ENGINE    = &apos;sqlite&apos;
+    }
     stage(&quot;Create Build&quot;){
-        parallel(
-            customer:{ node {
-                echo &quot;hey customer&quot;
-            }},
-            users:{ node {
-                echo &quot;hey users&quot;
-            }},
-            cards:{ node {
-                echo &quot;hey cards&quot;
-            }}
-            customer:{ node {
-                echo &quot;hey customer&quot;
-            }},
-            users:{ node {
-                echo &quot;hey users&quot;
-            }},
-            cards:{ node {
-                echo &quot;hey cards&quot;
-            }}
-        )
+        echo &quot;Hello&quot;
     }
     stage(&quot;Create Image&quot;){
-    parallel(
-            customer:{ node {
-                echo &quot;hey customer&quot;
-            }},
-            users:{ node {
-                echo &quot;hey users&quot;
-            }},
-            cards:{ node {
-                echo &quot;hey cards&quot;
-            }}
-        )
-    }
-    stage(&quot;Push Image&quot;){
-        parallel(
-            customer:{ node {
-                echo &quot;hey customer&quot;
-            }},
-            users:{ node {
-                echo &quot;hey users&quot;
-            }},
-            cards:{ node {
-                echo &quot;hey cards&quot;
-            }}
-        )
-    }
-    stage(&quot;QA VM&quot;){
-    echo &quot;QA with load testing, regression etc&quot;
+        sh &apos;printenv&apos;
     }
 }</script>
     <sandbox>true</sandbox>
