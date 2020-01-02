@@ -1,5 +1,23 @@
 <?xml version='1.1' encoding='UTF-8'?>
 <hudson.model.Queue_-State>
-  <counter>468</counter>
-  <items/>
+  <counter>470</counter>
+  <items>
+    <hudson.model.Queue_-BuildableItem>
+      <actions>
+        <hudson.model.CauseAction>
+          <causeBag class="linked-hash-map">
+            <entry>
+              <hudson.triggers.TimerTrigger_-TimerTriggerCause/>
+              <int>1</int>
+            </entry>
+          </causeBag>
+        </hudson.model.CauseAction>
+      </actions>
+      <id>470</id>
+      <task class="hudson.model.FreeStyleProject">bakcup</task>
+      <inQueueSince>1577943149663</inQueueSince>
+      <buildableStartMilliseconds>1577943149788</buildableStartMilliseconds>
+      <isPending>true</isPending>
+    </hudson.model.Queue_-BuildableItem>
+  </items>
 </hudson.model.Queue_-State>
