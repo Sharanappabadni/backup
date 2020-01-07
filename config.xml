@@ -31,6 +31,36 @@
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
     </hudson.model.AllView>
+    <hudson.plugins.view.dashboard.Dashboard plugin="dashboard-view@2.12">
+      <owner class="hudson" reference="../../.."/>
+      <name>My Dashboard</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator"/>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.BuildButtonColumn/>
+      </columns>
+      <recurse>false</recurse>
+      <useCssStyle>false</useCssStyle>
+      <includeStdJobList>false</includeStdJobList>
+      <hideJenkinsPanels>false</hideJenkinsPanels>
+      <leftPortletWidth>50%</leftPortletWidth>
+      <rightPortletWidth>50%</rightPortletWidth>
+      <leftPortlets/>
+      <rightPortlets/>
+      <topPortlets/>
+      <bottomPortlets/>
+    </hudson.plugins.view.dashboard.Dashboard>
   </views>
   <primaryView>all</primaryView>
   <slaveAgentPort>-1</slaveAgentPort>
